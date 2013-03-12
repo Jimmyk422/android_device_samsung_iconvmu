@@ -1,5 +1,4 @@
-
-BOARD_USES_ALSA_AUDIO := true
+LOCAL_PATH := device/samsung/iconvmu
 
 # inherit from the proprietary version
 -include vendor/samsung/iconvmu/BoardConfigVendor.mk
@@ -32,6 +31,7 @@ TARGET_BOOTANIMATION_PRELOAD := true
 # Graphics
 BOARD_EGL_CFG := device/samsung/iconvmu/configs/egl.cfg
 USE_OPENGL_RENDERER := true
+TARGET_USES_C2D_COMPOSITION := true
 #BOARD_USES_SKIAHWJPEG := true
 #COMMON_GLOBAL_CFLAGS += -DSEC_HWJPEG_G2D
 
@@ -57,10 +57,9 @@ TARGET_KERNEL_CONFIG := icon00_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/iconvmu/
 
 # fix this up by examining /proc/mtd on a running device
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x105c0000
-# BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x105c0000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x105c0000
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0xA00000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0xA00000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x3891A000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/iconvmu/recovery/graphics.c
@@ -73,6 +72,8 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Use this flag if the board has a ext4 partition larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
+TARGET_USERIMAGES_USE_EXT4 := true
 
 # Qcomm Libs
 BOARD_USES_QCOM_LIBS := true
@@ -121,3 +122,4 @@ PRODUCT_COPY_FILES += $(shell \
 	| sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
 	| tr '\n' ' ')
 	
+BOARD_EGL_CFG := $(LOCAL_PATH)/config/egl.cfg

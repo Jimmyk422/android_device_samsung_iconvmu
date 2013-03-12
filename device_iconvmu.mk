@@ -25,23 +25,29 @@ PRODUCT_LOCALES += hdpi
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-# Packages
+#lights
+PRODUCT_PACKAGES += \
+	lights.msm7X30
+	
+# Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    audio_policy.default \
+    audio.usb.default \
     audio_policy.msm7X30 \
-    audio.a2dp.default \
-    audio.primary.default \
     audio.primary.msm7X30 \
-    camera.msm7X30 \
-    copybit.msm7X30 \
-    gps.msm7X30 \
-    gralloc.default \
-    gralloc.msm7X30 \
-    hwcomposer.msm7X30 \
-    lights.msm7X30 \
-    sensors.msm7X30 \
-    com.android.future.usb.accessory
+    libalsa-intf \
+    libaudioutils \
+    aplay \
+    amix \
+    arec \
+    alsaucm_test
+    
+# HAL
+PRODUCT_PACKAGES += \
+	copybit.msm7X30 \
+	gralloc.msm7X30 \
+	hwcomposer.msm7X30 \
+	power.msm7X30
 
 PRODUCT_PACKAGES += \
 	libstagefright_amrnb_common.so \
@@ -61,24 +67,33 @@ PRODUCT_PACKAGES += \
 	libstagefright.so \
 	libstagefrighthw.so
 
+# QCOM Display
 PRODUCT_PACKAGES += \
-	libOmxAacDec.so \
-	libOmxAacEnc.so \
-	libOmxAdpcmDec.so \
-	libOmxAmrDec.so \
-	libOmxAmrEnc.so \
-	libOmxAmrRtpDec.so \
-	libOmxAmrwbDec.so \
-	libOmxCore.so \
-	libOmxEvrcDec.so \
-	libOmxEvrcEnc.so \
-	libOmxMp3Dec.so \
-	libOmxQcelp13Dec.so \
-	libOmxQcelp13Enc.so \
-	libOmxQcelpHwDec.so \
-	libOmxVdec.so \
-	libOmxVenc.so \
-	libOmxWmaDec.so
+    libgenlock \
+    libmemalloc \
+    liboverlay \
+    libqdutils \
+    libtilerenderer \
+    libI420colorconvert
+
+# Omx
+PRODUCT_PACKAGES += \
+    libdivxdrmdecrypt \
+    libmm-omxcore \
+    libOmxCore \
+    libstagefrighthw \
+    libOmxVdec \
+    libOmxVenc \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc
+
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    e2fsck \
+    setup_fs
 	
 	
 	
