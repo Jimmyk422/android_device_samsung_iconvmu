@@ -17,7 +17,7 @@ $(call inherit-product, build/target/product/full.mk)
 UTC_DATE := $(shell date +%s)
 DATE := $(shell date +%Y%m%d)
 
-PRODUCT_NAME := full_iconvmu
+PRODUCT_NAME := cm_iconvmu
 PRODUCT_DEVICE := iconvmu
 
 PRODUCT_LOCALES := en_US
@@ -25,70 +25,31 @@ PRODUCT_LOCALES += hdpi
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-#lights
-PRODUCT_PACKAGES += \
-	lights.msm7X30
-	
 # Audio
 PRODUCT_PACKAGES += \
+	libaudio \
+	libaudiopolicy \
+	libcamera \
     audio.a2dp.default \
     audio.usb.default \
-    audio_policy.msm7X30 \
-    audio.primary.msm7X30 \
-    libalsa-intf \
-    libaudioutils \
-    aplay \
-    amix \
-    arec \
-    alsaucm_test
+    audio_policy.$(TARGET_BOARD_PLATFORM) \
+    audio.primary.$(TARGET_BOARD_PLATFORM)
     
 # HAL
 PRODUCT_PACKAGES += \
-	copybit.msm7X30 \
-	gralloc.msm7X30 \
-	hwcomposer.msm7X30 \
-	power.msm7X30
-
-PRODUCT_PACKAGES += \
-	libstagefright_amrnb_common.so \
-	libstagefright_avc_common.so \
-	libstagefright_enc_common.so \
-	libstagefright_foundation.so \
-	libstagefright_omx.so \
-	libstagefright_soft_aacdec.so \
-	libstagefright_soft_amrdec.so \
-	libstagefright_soft_g711dec.so \
-	libstagefright_soft_h264dec.so \
-	libstagefright_soft_mp3dec.so \
-	libstagefright_soft_mpeg4dec.so \
-	libstagefright_soft_vorbisdec.so \
-	libstagefright_soft_vpxdec.so \
-	libstagefright_yuv.so \
-	libstagefright.so \
-	libstagefrighthw.so
+	copybit.$(TARGET_BOARD_PLATFORM) \
+	gralloc.$(TARGET_BOARD_PLATFORM) \
+	hwcomposer.$(TARGET_BOARD_PLATFORM) \
+	power.$(TARGET_BOARD_PLATFORM) \
+	lights.$(TARGET_BOARD_PLATFORM)
 
 # QCOM Display
 PRODUCT_PACKAGES += \
     libgenlock \
     libmemalloc \
     liboverlay \
-    libqdutils \
-    libtilerenderer \
     libI420colorconvert
-
-# Omx
-PRODUCT_PACKAGES += \
-    libdivxdrmdecrypt \
-    libmm-omxcore \
-    libOmxCore \
-    libstagefrighthw \
-    libOmxVdec \
-    libOmxVenc \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc
-
+    
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
@@ -111,8 +72,7 @@ PRODUCT_PACKAGES += \
     MagicSmokeWallpapers \
     NoiseField \
     PhaseBeam \
-    VisualizationWallpapers \
-    librs_jni
+    VisualizationWallpapers
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -167,63 +127,24 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/scripts/init.qcom.coex.sh:system/etc/init.qcom.coex.sh
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/keychars/surf_keypad.kcm:system/usr/keychars/surf_keypad.kcm \
-	$(LOCAL_PATH)/keychars/Virtual.kcm:system/usr/keychars/Virtual.kcm \
-	$(LOCAL_PATH)/keychars/Generic.kcm:system/usr/keychars/Generic.kcm \
-	$(LOCAL_PATH)/keychars/qwerty.kcm:system/usr/keychars/qwerty.kcm \
-	$(LOCAL_PATH)/keychars/qwerty2.kcm:system/usr/keychars/qwerty2.kcm
+	$(LOCAL_PATH)/keychars/surf_keypad.kcm:system/usr/keychars/surf_keypad.kcm
 		
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
 	$(LOCAL_PATH)/keylayout/msm_tma300_ts.kl:system/usr/keylayout/msm_tma300_ts.kl \
 	$(LOCAL_PATH)/keylayout/surf_keypad.kl:system/usr/keylayout/surf_keypad.kl \
 	$(LOCAL_PATH)/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
 	$(LOCAL_PATH)/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
 	$(LOCAL_PATH)/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
 	$(LOCAL_PATH)/keylayout/sec_powerkey.kl:system/usr/keylayout/sec_powerkey.kl \
-	$(LOCAL_PATH)/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
 	$(LOCAL_PATH)/keylayout/fluid-keypad.kl:system/usr/keylayout/fluid-keypad.kl \
 	$(LOCAL_PATH)/keylayout/icon-keypad.kl:system/usr/keylayout/icon-keypad.kl \
 	$(LOCAL_PATH)/keylayout/sii9234_rcp.kl:system/usr/keylayout/sii9234_rcp.kl
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
-	$(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-	$(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
-	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
-	$(LOCAL_PATH)/configs/egl.cfg:system/etc/egl.cfg \
-	$(LOCAL_PATH)/configs/thermald.conf:system/etc/thermald.conf \
-	$(LOCAL_PATH)/configs/thermald.conf:system/etc/thermald.conf \
-	$(LOCAL_PATH)/configs/vold.fstab:system/etc/configs/vold.fstab \
-	$(LOCAL_PATH)/configs/OperatorPolicy.xml:system/etc/configs/OperatorPolicy.xml \
-	$(LOCAL_PATH)/configs/vold.conf:system/etc/configs/vold.conf \
-	$(LOCAL_PATH)/configs/gps.xml:system/etc/configs/gps.xml \
-	$(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/configs/wpa_supplicant.conf
-		
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=131072 \
-    hwui.render_dirty_regions=false
-
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
-## CDMA Sprint stuffs
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.clientidbase=android-sprint-us \
-    ro.com.google.locationfeatures=1 \
-    ro.cdma.home.operator.numeric=310120 \
-    ro.cdma.home.operator.alpha=Sprint
-
-# Extra properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.setupwizard.enable_bypass=1 \
-    ro.com.google.locationfeatures=1
-    dalvik.vm.lockprof.threshold=500
-    dalvik.vm.dexopt-flags=m=y
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
+	$(LOCAL_PATH)/config/thermald.conf:system/etc/thermald.conf \
+	$(LOCAL_PATH)/config/vold.fstab:system/etc/configs/vold.fstab \
+	$(LOCAL_PATH)/config/vold.conf:system/etc/configs/vold.conf \
+	$(LOCAL_PATH)/config/gps.xml:system/etc/configs/gps.xml \
+	$(LOCAL_PATH)/config/wpa_supplicant.conf:system/etc/configs/wpa_supplicant.conf
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0

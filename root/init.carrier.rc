@@ -1,0 +1,116 @@
+#
+# tcp window size customizing for sprint.
+#
+on boot
+
+setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1048576
+setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,110208
+
+    chmod 755 /system/bin/geomagneticd
+
+# accelerometer
+    chown system input /sys/devices/virtual/input/input3/enable
+    chown system input /sys/devices/virtual/input/input3/delay
+    chown system input /sys/devices/virtual/input/input3/position
+    chown system input /sys/devices/virtual/input/input3/threshold
+    chown system input /sys/devices/virtual/input/input3/wake
+    chown system input /sys/devices/virtual/input/input3/data
+
+    chown system input /sys/devices/virtual/input/input4/enable
+    chown system input /sys/devices/virtual/input/input4/delay
+    chown system input /sys/devices/virtual/input/input4/position
+    chown system input /sys/devices/virtual/input/input4/threshold
+    chown system input /sys/devices/virtual/input/input4/wake
+    chown system input /sys/devices/virtual/input/input4/data
+
+# geomagnetic
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input4/delay
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input4/enable
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input4/filter_enable
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input4/filter_len
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input4/filter_threshold
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input4/filter_noise
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input4/data
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input4/status
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input4/wake
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input4/position
+
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/delay
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/enable
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/filter_enable
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/filter_len
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/filter_threshold
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/filter_noise
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/data
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/status
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/wake
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/position
+
+# geomagnetic_raw
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/threshold
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/distortion
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/shape
+    chown compass input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/offsets
+    chown compass input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input5/dynamic_matrix
+
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input6/threshold
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input6/distortion
+    chown system input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input6/shape
+    chown compass input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input6/offsets
+    chown compass input /sys/devices/platform/i2c-gpio.8/i2c-8/8-002e/input/input6/dynamic_matrix
+
+# orientation
+    chown system input /sys/devices/virtual/input/input6/delay
+    chown system input /sys/devices/virtual/input/input6/enable
+    chown system input /sys/devices/virtual/input/input6/wake
+    chown system input /sys/devices/virtual/input/input6/data
+    chown system input /sys/devices/virtual/input/input6/status
+
+    chown system input /sys/devices/virtual/input/input7/delay
+    chown system input /sys/devices/virtual/input/input7/enable
+    chown system input /sys/devices/virtual/input/input7/wake
+    chown system input /sys/devices/virtual/input/input7/data
+    chown system input /sys/devices/virtual/input/input7/status
+
+# proximity
+    chown system input /sys/devices/virtual/input/input7/delay
+    chown system input /sys/devices/virtual/input/input7/enable
+    chown system input /sys/devices/virtual/input/input7/wake
+    chown system input /sys/devices/virtual/input/input7/data
+
+    chown system input /sys/devices/virtual/input/input8/delay
+    chown system input /sys/devices/virtual/input/input8/enable
+    chown system input /sys/devices/virtual/input/input8/wake
+    chown system input /sys/devices/virtual/input/input8/data
+
+# light
+    chown system input /sys/devices/virtual/input/input8/delay
+    chown system input /sys/devices/virtual/input/input8/enable
+    chown system input /sys/devices/virtual/input/input8/wake
+    chown system input /sys/devices/virtual/input/input8/data
+    chown system input /sys/devices/virtual/input/input8/status
+
+    chown system input /sys/devices/virtual/input/input9/delay
+    chown system input /sys/devices/virtual/input/input9/enable
+    chown system input /sys/devices/virtual/input/input9/wake
+    chown system input /sys/devices/virtual/input/input9/data
+    chown system input /sys/devices/virtual/input/input9/status
+
+# AuthenTec VPNClient Interceptor module
+   insmod /system/lib/modules/vpnclient.ko
+   
+# AuthenTec VPNClient 
+service vpnclientpm /system/bin/vpnclientpm -O /data/data/com.ipsec.vpnclient/vpnclientpm.txt
+    group system net_admin net_raw
+    disabled
+   
+service vpncstarter /system/bin/vpncstarter
+    class main
+    user system
+    group system
+
+on property:vpnclientpm.enable=1
+    start vpnclientpm
+   
+on property:vpnclientpm.enable=0
+    stop vpnclientpm

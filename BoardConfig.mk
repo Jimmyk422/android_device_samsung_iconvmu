@@ -19,26 +19,26 @@ BOARD_USES_ALSA_AUDIO := true
 TARGET_PROVIDES_LIBLIGHTS := true
 
 TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
 TARGET_ARCH := arm
-TARGET_BOARD_PLATFORM := msm7X30
-TARGET_ARCH_VARIANT := armv7-a
+TARGET_BOARD_PLATFORM := msm7630
+TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_BOOTLOADER_BOARD_NAME := msm7X30
+ARCH_ARM_HAVE_TLS_REGISTER := true
+ARCH_ARM_HAVE_NEON :=true
+ARCH_ARM_HAVE_VFP := true
+TARGET_CPU_VARIANT := cortex-a9
+TARGET_BOOTLOADER_BOARD_NAME := msm7630_surf
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
-TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 # Graphics
 BOARD_EGL_CFG := device/samsung/iconvmu/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 TARGET_USES_C2D_COMPOSITION := true
-#BOARD_USES_SKIAHWJPEG := true
-#COMMON_GLOBAL_CFLAGS += -DSEC_HWJPEG_G2D
-
-# Camera
-#BOARD_USES_PROPRIETARY_LIBCAMERA := true
-#BOARD_USES_PROPRIETARY_LIBFIMC := true
-#COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
 
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_charging_source
@@ -46,10 +46,11 @@ BOARD_BATTERY_DEVICE_NAME := "battery"
 
 # Audio
 #BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
+TARGET_BOOTANIMATION_PRELOAD := true
 
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31
 BOARD_KERNEL_BASE := 0x00400000
-BOARD_FORCE_RAMDISK_ADDRESS := 0x01700000
+CMDLINE_ARGS := --ramdisk_address 0x01300000
 BOARD_KERNEL_PAGESIZE := 2048
 
 TARGET_PREBUILT_KERNEL := device/samsung/iconvmu/kernel
@@ -59,7 +60,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/iconvmu/
 # fix this up by examining /proc/mtd on a running device
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0xA00000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0xA00000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x3891A000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 949067776
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/iconvmu/recovery/graphics.c
@@ -109,17 +110,12 @@ TARGET_USES_C2D_COMPOSITION := true
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_HAVE_SAMSUNG_BLUETOOTH := true
+BOARD_HAVE_BROADCOM_BLUETOOTH := true
 
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=0
-ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1
-ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=adb
-
-# copy all kernel modules under the "kernel/modules" directory to system/lib/modules
-PRODUCT_COPY_FILES += $(shell \
-	find $(LOCAL_PATH)/kernel/modules -name '*.ko' 2> /dev/null \
-	| sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
-	| tr '\n' ' ')
+ADDITIONAL_DEFAULT_PROPERTIES += \
+	ro.secure=0 \
+	ro.allow.mock.location=0 \
+	ro.debuggable=1 \
+	persist.sys.usb.config=adb
 	
 BOARD_EGL_CFG := $(LOCAL_PATH)/config/egl.cfg

@@ -1,3 +1,161 @@
 #
 # system.prop for iconvmu
 #
+ro.opengles.version=131072
+hwui.render_dirty_regions=false
+persist.sys.usb.config=mtp
+ro.com.google.clientidbase=android-sprint-us
+ro.com.google.locationfeatures=1
+ro.cdma.home.operator.numeric=310120
+ro.cdma.home.operator.alpha=Sprint
+ro.setupwizard.enable_bypass=1
+ro.com.google.locationfeatures=1
+dalvik.vm.lockprof.threshold=500
+dalvik.vm.dexopt-flags=m=y
+wifi.interface=wlan0
+wifi.supplicant_scan_interval=15
+# system.prop for surf
+#
+rild.libpath=/system/lib/libsec-ril.so
+rild.libargs=-d /dev/smd0
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+ril.subscription.types=NV,RUIM
+DEVICE_PROVISIONED=1
+debug.sf.hw=1
+debug.egl.hw=1
+debug.composition.type=dyn
+ro.sf.compbypass.enable=1
+ro.sf.lcd_density=240
+dev.pm.dyn_samplingrate=1
+ro.hdmi.enable=true
+lpa.decode=true
+lpa.use-stagefright=true
+ro.yas.enable=true
+ro.yas-selftest.enable=true
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
+#
+# system props for the data modules
+#
+ro.use_data_netmgrd=true
+
+#system props for time-services
+persist.timed.enable=true
+
+# System props for audio
+persist.audio.fluence.mode=endfire
+persist.audio.vr.enable=false
+persist.audio.handset.mic=digital
+persist.audio.speaker.location=high
+
+#
+# system prop for opengles version
+#
+# 131072 is decimal for 0x20000 to report version 2
+ro.opengles.version=131072
+
+#
+# system prop for Bluetooth Dialup Networking
+#
+ro.qualcomm.bluetooth.dun=false
+
+# system prop for Bluetooth FTP profile
+ro.qualcomm.bluetooth.ftp=false
+#
+# system property for Bluetooth Handsfree Profile Wide Band Speech
+#
+ro.qualcomm.bluetooth.hfp.wbs=false
+#
+#system prop for Bluetooth hci transport
+ro.qualcomm.bt.hci_transport=smd
+#
+# system prop for requesting Master role in incoming Bluetooth connection.
+#
+ro.bluetooth.request.master=true
+#
+# system prop for Bluetooth Auto connect for remote initated connections
+#
+ro.bluetooth.remote.autoconnect=true
+# system property for Bluetooth discoverability time out in seconds
+# 0: Always discoverable
+#debug.bt.discoverable_time=0
+
+#system prop for switching gps driver to qmi
+persist.gps.qmienabled=true
+
+# System property for cabl
+ro.qualcomm.cabl=0
+
+# For CDMA project
+telephony.lteOnCdmaDevice=0
+
+# System property for Default Brightness
+ro.lcd_min_brightness=20
+# Sprint default ecclist
+ro.ril.ecclist=112,911,#911,*911
+
+# System property for SIM
+persist.radio.apm_sim_not_pwdn=1
+
+#add camera sound property for SPR concept
+ro.camera.sound.forced=1
+
+# Multimedia property for Smart View
+
+media.enable-commonsource=true
+
+# System proverty for sys info indication
+persist.radio.add_power_save=1
+
+# system prop for control EONS
+#  Type: boolean ( true = EONS enabled, false = EONS disabled)
+#
+persist.eons.enabled=false
+
+# System property for PreloadInstaller
+persist.sys.storage_preload=1
+
+ro.cdma.default_numeric=311490
+ro.cdma.default_alpha=Virgin Mobile
+
+#
+# ADDITIONAL_BUILD_PROPERTIES
+#
+dalvik.vm.heapgrowthlimit=64m
+dalvik.vm.heapstartsize=5m
+dalvik.vm.heapsize=128m
+ro.vendor.extension_library=/system/lib/libqc-opt.so
+ro.sec.fle.encryption=true
+ro.config.alarm_alert=Walk_in_the_forest.ogg
+ro.config.ringtone=01_Over_the_horizon_Acoustic.ogg
+ro.config.notification_sound=S_Whistle.ogg
+ro.error.receiver.default=com.samsung.receiver.error
+keyguard.no_require_sim=true
+ro.com.android.dateformat=MM-dd-yyyy
+dev.sfbootcomplete=0
+ro.com.google.clientidbase=android-samsung
+drm.service.enable=true
+ro.ril.hsxpa=1
+ro.ril.gprsclass=10
+ro.adb.qemud=1
+ro.setupwizard.mode=DISABLED
+ro.com.google.clientidbase.ms=android-virgin-us
+ro.com.google.clientidbase.am=android-virgin-us
+ro.com.google.clientidbase.gmm=android-samsung
+ro.com.google.clientidbase.yt=android-virgin-us
+ro.com.google.apphider=off
+ro.com.google.gmsversion=4.0_r7
+net.bt.name=Android
+dalvik.vm.stack-trace-file=/data/anr/traces.txt
